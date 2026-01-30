@@ -9,7 +9,6 @@ const MathGame = ({ onClose }) => {
   const [timeLeft, setTimeLeft] = useState(60);
   const [gameActive, setGameActive] = useState(true);
   const [gameStarted, setGameStarted] = useState(false);
-  const [feedback, setFeedback] = useState(null);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 

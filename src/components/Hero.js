@@ -152,13 +152,6 @@ const Hero = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section id="home" className="hero">
       <div className="hero-content">
