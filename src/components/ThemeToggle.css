@@ -1,0 +1,52 @@
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-hover-color);
+  background: var(--surface-hover-color);
+}
+
+.theme-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-icon {
+  transform: scale(1.1);
+}
+
+/* Theme variables will be set by the theme context */
+:root {
+  --background-color: #6495ED;
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-hover-color: rgba(255, 255, 255, 0.2);
+  --border-color: #ffffff;
+  --border-hover-color: #ffffff;
+  --text-color: #ffffff;
+  --text-secondary-color: #ffffff;
+  --text-muted-color: #ffffff;
+  --accent-color: #ffffff;
+}
+
+[data-theme="dark"] {
+  --background-color: #000000;
+  --surface-color: rgba(255, 255, 255, 0.02);
+  --surface-hover-color: rgba(255, 255, 255, 0.05);
+  --border-color: #ffffff;
+  --border-hover-color: #ffffff;
+  --text-color: #ffffff;
+  --text-secondary-color: #ffffff;
+  --text-muted-color: #ffffff;
+  --accent-color: #ffffff;
+} 
