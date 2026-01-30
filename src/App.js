@@ -16,7 +16,7 @@ import DivingPage from './pages/DivingPage';
 function App() {
   return (
     <ThemeProvider>
-      <Router basename="/personal-website">
+      <Router basename={process.env.PUBLIC_URL}>
         <div className="App">
           <Routes>
             {/* Home page with simplified sections */}
