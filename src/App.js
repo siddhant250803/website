@@ -1,72 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { ThemeProvider } from './contexts/ThemeContext';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import AboutPage from './pages/AboutPage';
-import ResearchPage from './pages/ResearchPage';
-import ContactPage from './pages/ContactPage';
-import DivingPage from './pages/DivingPage';
 
 function App() {
   return (
-    <ThemeProvider>
-      <Router basename={process.env.PUBLIC_URL}>
-        <div className="App">
-          <Routes>
-            {/* Home page with simplified sections */}
-            <Route path="/" element={
-              <>
-                <Header />
-                <Hero />
-                <About />
-                <Projects />
-                <Contact />
-                <Footer />
-              </>
-            } />
-            
-            {/* Detailed separate pages */}
-            <Route path="/about" element={
-              <>
-                <Header />
-                <AboutPage />
-                <Footer />
-              </>
-            } />
-            
-            <Route path="/research" element={
-              <>
-                <Header />
-                <ResearchPage />
-                <Footer />
-              </>
-            } />
-            
-            <Route path="/contact" element={
-              <>
-                <Header />
-                <ContactPage />
-                <Footer />
-              </>
-            } />
-            
-            <Route path="/diving" element={
-              <>
-                <Header />
-                <DivingPage />
-                <Footer />
-              </>
-            } />
-          </Routes>
+    <div className="app">
+      <main>
+        <h1>hi, i'm siddhant</h1>
+        <p className="subtitle">computational math + finance</p>
+        
+        <p className="bio">
+          stanford mcf '26 · georgia tech '25
+        </p>
+
+        <div className="links">
+          <a href="mailto:sukhani@stanford.edu">email</a>
+          <a href="https://github.com/siddhant250803" target="_blank" rel="noopener noreferrer">github</a>
+          <a href="https://linkedin.com/in/siddhantsukhani" target="_blank" rel="noopener noreferrer">linkedin</a>
+          <a href="https://scholar.google.com/citations?user=VAwr1v8AAAAJ" target="_blank" rel="noopener noreferrer">scholar</a>
+          <a href={`${process.env.PUBLIC_URL}/Siddhant_Sukhani_resume.pdf`} target="_blank" rel="noopener noreferrer">resume</a>
         </div>
-      </Router>
-    </ThemeProvider>
+      </main>
+    </div>
   );
 }
 
