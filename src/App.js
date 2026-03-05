@@ -6,6 +6,7 @@ const projects = [
   { name: 'World Central Banks', desc: 'Global monetary policy analysis - 380k sentences from 27 central banks, 28 years of data', link: 'https://gcb-web-bb21b.web.app/' },
   { name: 'FinNLP Survey', desc: 'Language Modeling for the Future of Finance - survey of 400+ papers from ACL Anthology', link: 'https://arxiv.org/abs/2504.07274' },
   { name: 'FinCap', desc: 'ICCV 2025 - Topic-aligned captions for short-form financial YouTube videos using multimodal LLMs', link: 'https://arxiv.org/abs/2509.25745' },
+  { name: 'Volatility Surface Optimal Transport', desc: 'What the Vol Surface Knows: Optimal Transport and the Variance Risk Premium', link: 'https://substack.com/home/post/p-189936177' },
   { name: 'Multi-Asset Dynamic Portfolio', desc: 'Quantitative trading strategy with 24.5% CAGR (14.5% alpha) across equities, debt, and commodities', link: null },
   { name: 'Data Pipeline', desc: 'End-to-end adaptive data pipeline for a quantitative research hedge fund using Cron, Selenium, and MongoDB', link: null },
   { name: 'Backtrading Engine', desc: 'Advanced backtesting framework with Monte Carlo simulations and stress testing for trading strategies', link: null },
@@ -36,6 +37,7 @@ function App() {
           <a href="https://linkedin.com/in/siddhantsukhani" target="_blank" rel="noopener noreferrer">linkedin</a>
           <a href="https://scholar.google.com/citations?user=VAwr1v8AAAAJ" target="_blank" rel="noopener noreferrer">scholar</a>
           <a href={`${process.env.PUBLIC_URL}/Siddhant_Sukhani_resume.pdf`} target="_blank" rel="noopener noreferrer">resume</a>
+          <a href="https://substack.com/@siddhantsukhani" target="_blank" rel="noopener noreferrer">thoughts</a>
         </div>
 
         <div className="stuff">
