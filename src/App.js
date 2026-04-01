@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 const categories = [
@@ -32,10 +32,78 @@ const categories = [
   },
 ];
 
+function PullSwitch({ onToggle }) {
+  const handleRef = useRef(null);
+  const cordRef = useRef(null);
+  const rafRef = useRef(null);
+  const phys = useRef({ pos: 0, vel: 0, running: false });
+
+  const pull = () => {
+    if (phys.current.running) return;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+
+    phys.current.pos = 0;
+    phys.current.vel = 1400; // initial downward impulse (px/s)
+    phys.current.running = true;
+    onToggle();
+
+    const step = () => {
+      const p = phys.current;
+      const k = 120;  // spring stiffness
+      const b = 8.5;  // damping — underdamped for natural oscillation
+      const dt = 1 / 60;
+
+      p.vel += (-k * p.pos - b * p.vel) * dt;
+      p.pos += p.vel * dt;
+
+      if (handleRef.current) {
+        handleRef.current.style.transform = `translateY(${p.pos.toFixed(2)}px)`;
+      }
+      if (cordRef.current) {
+        const h = cordRef.current.offsetHeight || 1;
+        const scale = ((h + p.pos) / h).toFixed(4);
+        cordRef.current.style.transform = `scaleY(${Math.max(0.05, scale)})`;
+      }
+
+      if (Math.abs(p.pos) > 0.25 || Math.abs(p.vel) > 0.25) {
+        rafRef.current = requestAnimationFrame(step);
+      } else {
+        p.pos = 0;
+        p.vel = 0;
+        p.running = false;
+        if (handleRef.current) handleRef.current.style.transform = '';
+        if (cordRef.current) cordRef.current.style.transform = '';
+      }
+    };
+
+    rafRef.current = requestAnimationFrame(step);
+  };
+
+  useEffect(() => () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  return (
+    <div className="pull-switch" onClick={pull}>
+      <div className="cord-mount" />
+      <div className="cord-line" ref={cordRef} />
+      <div className="cord-handle" ref={handleRef} />
+    </div>
+  );
+}
+
 function App() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [selected, setSelected] = useState(null);
   const [panelVisible, setPanelVisible] = useState(false);
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
 
   const handleCategoryClick = (label) => {
     const cat = categories.find((c) => c.label === label);
@@ -78,6 +146,8 @@ function App() {
 
   return (
     <div className="app">
+      <PullSwitch onToggle={toggleTheme} />
+
       <main>
         <h1>hi, i'm siddhant</h1>
         <p className="subtitle">computational math + finance</p>
