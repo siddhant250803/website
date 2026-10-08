@@ -152,8 +152,7 @@ function App() {
         <h1>hi, i'm siddhant</h1>
         <p className="subtitle">computational math + finance</p>
         <p className="bio">
-          <a href="https://zettaquant.ai" target="_blank" rel="noopener noreferrer">zettaquant</a>
-          {' · '}stanford icme '27 · georgia tech '25 ·{' '}
+          stanford icme '27 · georgia tech '25 ·{' '}
           <a href="https://stvp.stanford.edu/alp/" target="_blank" rel="noopener noreferrer">accel fellow</a>
         </p>
 
